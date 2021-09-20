@@ -1,0 +1,21 @@
+version: '3'
+
+
+services:
+    angular:
+        hostname: localhost
+        # build: BunnyPayPIM
+        image: bunnypay/bunnypayv2.0:angular1.0
+        ports:
+            - 8080:80
+    express:
+        # build: NodeJSFlutter_n
+        image: bunnypay/bunnypayv2.0:express1.0
+        ports:
+            - '3000:3000'
+        links:
+            - "database"
+    database:
+        image : mongo
+        ports:
+            - 27017:27017
